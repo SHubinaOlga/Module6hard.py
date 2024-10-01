@@ -1,3 +1,5 @@
+import math
+
 class Figure:
     sides_count = 0
 
@@ -36,7 +38,7 @@ class Figure:
 
     def set_sides(self, *sides):
         if self.__is_valid_sides(sides):
-            self.__sides = sides
+           self.__sides = sides
 
     def get_sides(self):
         return [*self.__sides]
@@ -49,18 +51,22 @@ class Circle(Figure):
     sides_count = 1
 
     def __radius(self):
-        return self.__len__ * (2 / pi)
+        __radius = self.__len__() * (2 / pi)
+        return __radius()
 
     def get_square(self):
-        return (self.__len__ ** 2) / (4 * pi)
-
+        return (self.__len__() ** 2) / (4 * pi)
 
 class Triangle(Figure):
     sides_count = 3
 
     def get_square(self):
-       return (self.side ** 2) * (3 ** 0.5) / 4
+        return (side ** 2) * (3 ** 0.5) / 4
 
+    def get_sides(self):
+        p = self.__len__() / 2
+        s = sqrt((p * (p - sides[0]) * (p - sides[1]) * (p - sides[2])))
+        return s
 
 class Cube(Figure):
     sides_count = 12
